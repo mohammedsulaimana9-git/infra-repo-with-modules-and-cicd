@@ -1,6 +1,6 @@
 aws_region          = "ap-south-1"
 instance_type       = "t3.micro"
-ami_id              = "ami-0f58b397bc5c1f2e8"
+ami_id              = "ami-034a8236c75419857"
 instance_name       = "terraform-ec2"
 bucket_name         = "terraform-demo-bucket-1234567"
 lambda_function_name = "terraform-demo-lambda"
