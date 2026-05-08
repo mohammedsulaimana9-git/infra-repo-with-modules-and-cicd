@@ -43,7 +43,7 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   key_name               = aws_key_pair.this.key_name
   vpc_security_group_ids = [aws_security_group.this.id]
-  iam_instance_profile   = var.iam_instance_role
+  
 
   tags = {
     Name = var.instance_name
