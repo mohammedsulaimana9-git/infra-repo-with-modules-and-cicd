@@ -10,6 +10,10 @@ jobs:
   terraform-cd:
     runs-on: ubuntu-latest
 
+    env:
+      VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+      VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+
     steps:
       # Checkout repository code
       - name: Checkout Code
