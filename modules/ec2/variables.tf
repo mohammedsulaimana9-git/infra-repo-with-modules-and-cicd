@@ -14,6 +14,3 @@ variable "key_name" {
   type = string
 }
 
-variable "iam_instance_role" {
-  type = string
-}
