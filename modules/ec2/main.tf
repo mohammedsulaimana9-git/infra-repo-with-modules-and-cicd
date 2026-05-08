@@ -1,16 +1,33 @@
-# Key Pair
+# Generate SSH Key
+
+resource "tls_private_key" "this" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# Create AWS Key Pair
+
 resource "aws_key_pair" "this" {
   key_name   = var.key_name
-  public_key = file(var.public_key_path)
+  public_key = tls_private_key.this.public_key_openssh
+}
+
+# Save Private Key Locally
+
+resource "local_file" "private_key" {
+  content  = tls_private_key.this.private_key_pem
+  filename = "${var.key_name}.pem"
 }
 
 # IAM Instance Profile
+
 resource "aws_iam_instance_profile" "this" {
   name = "${var.instance_name}-profile"
   role = var.iam_instance_role
 }
 
 # Security Group
+
 resource "aws_security_group" "this" {
   name = "terraform-ec2-sg"
 
@@ -19,7 +36,6 @@ resource "aws_security_group" "this" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow SSH"
   }
 
   ingress {
@@ -27,7 +43,6 @@ resource "aws_security_group" "this" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-    description = "Allow HTTP"
   }
 
   egress {
@@ -39,6 +54,7 @@ resource "aws_security_group" "this" {
 }
 
 # EC2 Instance
+
 resource "aws_instance" "this" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
