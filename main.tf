@@ -9,7 +9,6 @@ module "ec2" {
   instance_type     = var.instance_type
   instance_name     = var.instance_name
   key_name          = var.key_name
-  public_key_path   = var.public_key_path
   iam_instance_role = module.iam.role_name
 }
 
