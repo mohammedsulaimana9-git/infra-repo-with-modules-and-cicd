@@ -12,7 +12,8 @@ terraform {
 provider "aws" {
   region = var.aws_region
 }
+
 provider "vault" {
-  address = var.vault_addr
-  token   = var.vault_token
+  address = env("VAULT_ADDR")
+  token   = env("VAULT_TOKEN")
 }
