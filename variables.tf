@@ -26,9 +26,5 @@ variable "vault_addr" {
   type        = string
 }
 
-variable "vault_token" {
-  description = "Vault authentication token"
-  type        = string
-  sensitive   = true
-}
+
 
