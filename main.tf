@@ -9,7 +9,7 @@ module "ec2" {
   instance_type     = var.instance_type
   instance_name     = var.instance_name
   key_name          = var.key_name
-  iam_instance_role = module.iam.role_name
+  iam_instance_role = module.iam.instance_profile_name
 }
 
 module "s3" {
