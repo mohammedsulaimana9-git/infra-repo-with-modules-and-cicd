@@ -1,8 +1,3 @@
-module "iam" {
-  source    = "./modules/iam"
-  role_name = var.role_name
-}
-
 module "ec2" {
   source            = "./modules/ec2"
   ami_id            = var.ami_id
@@ -17,8 +12,3 @@ module "s3" {
   bucket_name = var.bucket_name
 }
 
-module "lambda" {
-  source               = "./modules/lambda"
-  function_name        = var.lambda_function_name
-  lambda_role_arn      = module.iam.lambda_role_arn
-}
