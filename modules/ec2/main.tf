@@ -50,9 +50,9 @@ resource "aws_instance" "this" {
   }
 }
 
-# Store Private Key (PEM) into HashiCorp Vault
+# Store Private Key in Vault
 resource "vault_kv_secret_v2" "ec2_pem_key" {
-  mount = "secret"                    # Change if your vault mount is different
+  mount = "secret"
   name  = "aws/ec2/${var.instance_name}-pem"
 
   data_json = jsonencode({
@@ -62,4 +62,3 @@ resource "vault_kv_secret_v2" "ec2_pem_key" {
     instance_id = aws_instance.this.id
   })
 }
-
