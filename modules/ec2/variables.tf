@@ -1,4 +1,4 @@
-variable "ami_id" {
+variable "instance_name" {
   type = string
 }
 
@@ -7,7 +7,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "instance_name" {
+variable "ami_id" {
   type = string
 }
 
