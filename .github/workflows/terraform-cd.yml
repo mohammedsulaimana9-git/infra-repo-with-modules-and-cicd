@@ -25,6 +25,8 @@ jobs:
         run: |
           vault status
 
+          vault kv get secret/aws
+
           echo "AWS_ACCESS_KEY_ID=$(vault kv get -field=access_key secret/aws)" >> $GITHUB_ENV
 
           echo "AWS_SECRET_ACCESS_KEY=$(vault kv get -field=secret_key secret/aws)" >> $GITHUB_ENV
@@ -36,6 +38,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
 
       - name: Terraform Plan
         run: terraform plan
