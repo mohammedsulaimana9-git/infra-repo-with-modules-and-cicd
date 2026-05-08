@@ -22,3 +22,10 @@ variable "key_name" {
   type = string
 }
 
+variable "var.vault_addr" {
+  type = string
+}
+
+variable "var.vault_token" {
+  type = string
+}
