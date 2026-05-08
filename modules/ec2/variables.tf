@@ -1,30 +1,19 @@
 variable "ami_id" {
-  type        = string
-  description = "AMI ID for the EC2 instance"
+  type = string
 }
 
 variable "instance_type" {
-  type        = string
-  description = "Instance type"
-  default     = "t2.micro"
+  type = string
 }
 
 variable "instance_name" {
-  type        = string
-  description = "Name of the EC2 instance"
+  type = string
 }
 
 variable "key_name" {
-  type        = string
-  description = "Name of the SSH key pair"
-}
-
-variable "public_key_path" {
-  type        = string
-  description = "Path to the public key file (e.g. ~/.ssh/id_rsa.pub)"
+  type = string
 }
 
 variable "iam_instance_role" {
-  type        = string
-  description = "Name of the IAM role to attach to the instance"
+  type = string
 }
