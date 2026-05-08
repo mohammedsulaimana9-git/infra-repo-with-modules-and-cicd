@@ -14,6 +14,6 @@ provider "aws" {
 }
 
 provider "vault" {
-  address = env("VAULT_ADDR")
-  token   = env("VAULT_TOKEN")
+  address = var.vault_addr
+  token   = var.vault_token
 }
